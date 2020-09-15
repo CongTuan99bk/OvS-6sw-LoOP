@@ -54,6 +54,11 @@ struct ofproto_async_msg {
 ///////////////////////////
 void reset_packet_in_counter(void);
 int get_packet_in_counter(void);
+int get_packet_in_counter_2(void);
+int get_packet_in_counter_3(void);
+int get_packet_in_counter_4(void);
+int get_packet_in_counter_5(void);
+int get_packet_in_counter_6(void);
 ///////////////////////////
 
 

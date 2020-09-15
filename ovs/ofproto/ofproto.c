@@ -1997,7 +1997,7 @@ void abnormal_detect1(struct ofproto *p)
       current_traf1=((float)(now_recorded_n_bytes1-p->last_recorded_n_bytes1))/CYCLE;
       
       fp1=fopen("home/lctuan/result_LoOP/data_recording1.log","a+");
-      fprintf(fp1, "%f,%f,",current_flow1,current_traf1);
+      fprintf(fp1, "%f,%f\n",current_flow1,current_traf1);
       fclose(fp1);
 
       if(p->training1==1)
@@ -2140,7 +2140,7 @@ void abnormal_detect2(struct ofproto *p)
       ofproto_port_get_stats(port2, &ops2.stats);
 
       now_recorded_n_bytes2=ops2.stats.rx_bytes;
-      now_recorded_n_flow2=get_packet_in_counter();
+      now_recorded_n_flow2=get_packet_in_counter_2();
       current_flow2=((float)(now_recorded_n_flow2-p->last_recorded_n_flow2))/CYCLE;
       current_traf2=((float)(now_recorded_n_bytes2-p->last_recorded_n_bytes2))/CYCLE;
       
@@ -2297,12 +2297,12 @@ void abnormal_detect3(struct ofproto *p)
       // current_traf=(now_recorded_n_bytes-p->last_recorded_n_bytes)/CYCLE;
 
       now_recorded_n_bytes3=ops3.stats.rx_bytes;
-      now_recorded_n_flow3=get_packet_in_counter();
+      now_recorded_n_flow3=get_packet_in_counter_3();
       current_flow3=((float)(now_recorded_n_flow3-p->last_recorded_n_flow3))/CYCLE;
       current_traf3=((float)(now_recorded_n_bytes3-p->last_recorded_n_bytes3))/CYCLE;
       
       fp3=fopen("home/lctuan/result_LoOP/data_recording3.log","a+");
-      fprintf(fp3, "%f,%f,",current_flow3,current_traf3);
+      fprintf(fp3, "%f,%f\n",current_flow3,current_traf3);
       fclose(fp3);
 
       if(p->training3==31)
@@ -2419,9 +2419,9 @@ void abnormal_detect3(struct ofproto *p)
           fclose(fp3);
           }
       }
-       fp3=fopen("/home/lctuan/result_LoOP/count2.log","a+");
-          fprintf(fp3, "%d, %d, %d\n",p->data_counter3,p->writing3,p->training3);
-          fclose(fp3);
+    //    fp3=fopen("/home/lctuan/result_LoOP/count2.log","a+");
+    //       fprintf(fp3, "%d, %d, %d\n",p->data_counter3,p->writing3,p->training3);
+    //       fclose(fp3);
       p->last_recorded_n_bytes3=now_recorded_n_bytes3;
       p->last_recorded_n_flow3=now_recorded_n_flow3;
       p->last_time3=current_time3;  
@@ -2456,7 +2456,7 @@ void abnormal_detect4(struct ofproto *p)
       // current_traf=(now_recorded_n_bytes-p->last_recorded_n_bytes)/CYCLE;
 
       now_recorded_n_bytes4=ops4.stats.rx_bytes;
-      now_recorded_n_flow4=get_packet_in_counter();
+      now_recorded_n_flow4=get_packet_in_counter_4();
       current_flow4=((float)(now_recorded_n_flow4-p->last_recorded_n_flow4))/CYCLE;
       current_traf4=((float)(now_recorded_n_bytes4-p->last_recorded_n_bytes4))/CYCLE;
       
@@ -2615,7 +2615,7 @@ void abnormal_detect5(struct ofproto *p)
       // current_traf=(now_recorded_n_bytes-p->last_recorded_n_bytes)/CYCLE;
 
       now_recorded_n_bytes5=ops5.stats.rx_bytes;
-      now_recorded_n_flow5=get_packet_in_counter();
+      now_recorded_n_flow5=get_packet_in_counter_5();
       current_flow5=((float)(now_recorded_n_flow5-p->last_recorded_n_flow5))/CYCLE;
       current_traf5=((float)(now_recorded_n_bytes5-p->last_recorded_n_bytes5))/CYCLE;
       
@@ -2773,7 +2773,7 @@ void abnormal_detect6(struct ofproto *p)
       // current_traf=(now_recorded_n_bytes-p->last_recorded_n_bytes)/CYCLE;
 
       now_recorded_n_bytes6=ops6.stats.rx_bytes;
-      now_recorded_n_flow6=get_packet_in_counter();
+      now_recorded_n_flow6=get_packet_in_counter_6();
       current_flow6=((float)(now_recorded_n_flow6-p->last_recorded_n_flow6))/CYCLE;
       current_traf6=((float)(now_recorded_n_bytes6-p->last_recorded_n_bytes6))/CYCLE;
       

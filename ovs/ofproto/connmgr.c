@@ -46,6 +46,11 @@
 
 ///////////////////////
 int count_packet_in=0;
+int count_packet_in2=0;
+int count_packet_in3=0;
+int count_packet_in4=0;
+int count_packet_in5=0;
+int count_packet_in6=0;
 int packet_count=0;
 ///////////////////////
 
@@ -1686,8 +1691,49 @@ connmgr_send_async_msg(struct connmgr *mgr,
                       msg, &txq);
         do_send_packet_ins(ofconn, &txq);
         
-        /////////////////count dem so packet entry moi
-        if(is_miss) count_packet_in++;
+        /////////////////count dem so packet entry moi tinh tren port 1
+
+        // if (mgr->ofproto->datapath_id == 0000000000000001)
+        // {if(is_miss) count_packet_in++;}
+
+        // if (mgr->ofproto->datapath_id == 0000000000000002)
+        // {if(is_miss) count_packet_in2++;}
+
+        // if (mgr->ofproto->datapath_id == 0000000000000003)
+        // {if(is_miss) count_packet_in3++;}
+
+        if(is_miss)
+        {
+            if (mgr->ofproto->datapath_id == 0000000000000001 && am->pin.up.base.flow_metadata.flow.in_port.ofp_port == 1)
+            {
+                count_packet_in++;
+            }
+            else if (mgr->ofproto->datapath_id == 0000000000000002 && am->pin.up.base.flow_metadata.flow.in_port.ofp_port == 1)
+            {
+                count_packet_in2++;
+            }
+            else if (mgr->ofproto->datapath_id == 0000000000000003 && am->pin.up.base.flow_metadata.flow.in_port.ofp_port == 1)
+            {
+                count_packet_in3++;
+                }
+            else if (mgr->ofproto->datapath_id == 0000000000000004 && am->pin.up.base.flow_metadata.flow.in_port.ofp_port == 1)
+            {
+                count_packet_in4++;
+                }
+            else if (mgr->ofproto->datapath_id == 0000000000000005 && am->pin.up.base.flow_metadata.flow.in_port.ofp_port == 1)
+            {
+                count_packet_in5++;
+                }
+            else if (mgr->ofproto->datapath_id == 0000000000000006 && am->pin.up.base.flow_metadata.flow.in_port.ofp_port == 1)
+            {
+                count_packet_in6++;
+                }
+        }
+        
+        // FILE *f;
+        // f = fopen("home/lctuan/result_LoOP/control_path.log","a+");
+        // fprintf(f,"%ld,%d,%d,%d,%d\n",mgr->ofproto->datapath_id,count_packet_in,count_packet_in2,count_packet_in3,am->pin.up.base.flow_metadata.flow.in_port.ofp_port);
+        // fclose(f);
 
     }
 }
@@ -2346,8 +2392,33 @@ ofproto_async_msg_free(struct ofproto_async_msg *am)
 void reset_packet_in_counter(void)
 {
     count_packet_in=0;
+    count_packet_in2=0;
+    count_packet_in3=0;
+    count_packet_in4=0;
+    count_packet_in5=0;
+    count_packet_in6=0;
 }
 int get_packet_in_counter(void)
 {
     return count_packet_in;
+}
+int get_packet_in_counter_2(void)
+{
+    return count_packet_in2;
+}
+int get_packet_in_counter_3(void)
+{
+    return count_packet_in3;
+}
+int get_packet_in_counter_4(void)
+{
+    return count_packet_in4;
+}
+int get_packet_in_counter_5(void)
+{
+    return count_packet_in5;
+}
+int get_packet_in_counter_6(void)
+{
+    return count_packet_in6;
 }
